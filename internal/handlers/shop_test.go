@@ -323,7 +323,7 @@ func TestBuyItem(t *testing.T) {
 		t.Errorf("got HTTP status code %d, expected 200", wr.Code)
 	}
 
-	req = httptest.NewRequest(http.MethodPost, "/api/buy/t-shirt", bytes.NewReader(jsonData))
+	req = httptest.NewRequest(http.MethodGet, "/api/buy/t-shirt", bytes.NewReader(jsonData))
 
 	shopHandler.BuyItem(wr, req)
 	if wr.Code != http.StatusOK {
@@ -394,7 +394,7 @@ func TestBuyItemPostgres(t *testing.T) {
 		t.Errorf("got HTTP status code %d, expected 200", wr.Code)
 	}
 
-	req = httptest.NewRequest(http.MethodPost, "/api/buy/t-shirt", bytes.NewReader(jsonData))
+	req = httptest.NewRequest(http.MethodGet, "/api/buy/t-shirt", bytes.NewReader(jsonData))
 
 	shopHandler.BuyItem(wr, req)
 	if wr.Code != http.StatusOK {
