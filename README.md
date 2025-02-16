@@ -1,4 +1,4 @@
-# AVITO SHOP [![License](https://img.shields.io/github/license/AVyach/avito-tech/)](https://opensource.org/license/mit) [![Lang](https://img.shields.io/github/languages/top/AVyach/SSO)](https://go.dev/)
+# AVITO SHOP [![License](https://img.shields.io/github/license/AVyach/avito-tech)](https://opensource.org/license/mit) [![Lang](https://img.shields.io/github/languages/top/AVyach/avito-tech)](https://go.dev/)
 
 ## Задание
 Ссылка на [задание](https://github.com/avito-tech/tech-internship/blob/main/Tech%20Internships/Backend/Backend-trainee-assignment-winter-2025/Backend-trainee-assignment-winter-2025.md)
@@ -26,10 +26,15 @@
 
 Чтобы указать пользователя и пароль от postgres можно воспользоваться флагами `-dbuser` и `-dbpass` соответственно
 
+Для указания времени сессии можно указать флаг -exp
+
 ### Docker
+Вначале необходимо поменять `localhost` на `postgres` в файле [main.go](cmd/app/main.go)
+
 Для запуска достаточно выполнить команду `docker-compose up -d`
 
 ### Podman
 Необходимо собрать образы контейнеров с помощью команд `podman build -t app -f cmd/app/Dockerfile .` и `podman build -t postgres -f db/Dockerfile .`
 
 Далее выполнить команду `podman kube play pod.yml`
+
