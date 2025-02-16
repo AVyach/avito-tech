@@ -20,19 +20,18 @@ import (
 	"github.com/UserNameShouldBeHere/AvitoTask/internal/services"
 )
 
-const (
-	backEndPort       = 8080
-	sessionExpiration = 60
-)
+const backEndPort = 8080
 
 func main() {
 	var (
-		dbUser     string
-		dbPassword string
+		dbUser            string
+    	dbPassword        string
+   		sessionExpiration int
 	)
 
 	flag.StringVar(&dbUser, "dbuser", "postgres", "database user")
 	flag.StringVar(&dbPassword, "dbpass", "root1234", "database password")
+	flag.IntVar(&sessionExpiration, "exp", 3600, "session expiration time")
 
 	flag.Parse()
 
@@ -96,7 +95,7 @@ func main() {
 	router.HandleFunc("GET /api/info", shopHandler.Info)
 	router.HandleFunc("POST /api/auth", authHandler.Auth)
 	router.HandleFunc("POST /api/sendCoin", shopHandler.SendCoin)
-	router.HandleFunc("POST /api/buy/{item}", shopHandler.BuyItem)
+	router.HandleFunc("GET /api/buy/{item}", shopHandler.BuyItem)
 
 	server := &http.Server{
 		Handler:      router,
