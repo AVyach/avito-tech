@@ -1,4 +1,4 @@
-module github.com/AVyach/avito-tech
+module github.com/UserNameShouldBeHere/AvitoTask
 
 go 1.23.4
 
