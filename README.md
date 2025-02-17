@@ -12,7 +12,7 @@
 
 Пароли пользователей хранятся в захэшированном виде. Для этого используется хэширование с солью с помощью библиотеки [argon2](https://pkg.go.dev/golang.org/x/crypto/argon2). Соль генерируется для каждого пароля разная, а после хэширования конкатенируется вместе с паролем
 
-Для просмотра тестового покрытие можно воспользоваться командой `go test ./... -coverprofile='coverage.out' && cat coverage.out | grep -v 'mock' | grep -v 'proto' > coverage_cleaned.out go tool cover -func='coverage_cleaned.out'` или же просто `task test-cover`(для этого требуется установить [task](https://taskfile.dev/))
+Для просмотра тестового покрытие можно воспользоваться командой `go test ./... -skip Postgres -coverprofile='coverage.out' && cat coverage.out | grep -v 'mock' | grep -v 'proto' > coverage_cleaned.out go tool cover -func='coverage_cleaned.out'` или же просто `task test-cover`(для этого требуется установить [task](https://taskfile.dev/))
 
 Для повышения скорости работы были добавлены индексы в postgres
 
